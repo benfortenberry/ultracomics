@@ -1,0 +1,41 @@
+﻿
+    <!--<i class="material-icons white-text larger" style="vertical-align:bottom; font-size:3em">chrome_reader_mode</i>-->
+   
+<a href="#"  ng-click="comicMode ='main'"  ng-show="(!comicMode && !creatorMode) || comicMode =='main'">
+    <h2 >
+
+        COMICS
+    </h2>
+
+</a>
+
+
+    <div class="row" ng-show="(!comicMode && !creatorMode) || comicMode =='main'">
+
+        <div ng-class="comicMode == 'main' ? 'col-sm-4' : 'col-sm-12'">
+
+
+            <ul class="list-group" ng-show="!comicMode || comicMode =='main'">
+
+                <li class="list-group-item">
+                    <a ng-click="comicMode='hooty';changeColors();" href="#" class="black-text">
+                        <div class="thumbnail">
+                            <img src="comics/hooty/thumb.jpg" ng-if="!comicMode || comicMode =='main'" />
+                        </div>
+
+                        <h3 class="list-group-item-heading">The Adventures of Hooty</h3>
+                        <span class="badge" style="background-color:{{badgeColor}}">New Issues</span>
+                    </a>
+                </li>
+
+
+            </ul>
+
+        </div>
+    </div>
+
+
+
+    <comic title="comicMode"></comic>
+
+

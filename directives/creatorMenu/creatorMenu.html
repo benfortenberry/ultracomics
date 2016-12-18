@@ -1,0 +1,39 @@
+﻿
+<a href="#" ng-click="creatorMode ='main'" ng-show="creatorMode =='main' || !creatorMode">
+    <h2>CREATORS</h2>
+</a>
+
+
+<ul class="list-group" ng-show="!creatorMode">
+
+    <li class="list-group-item">
+        <a  ng-click="loadCreator('name')" href="#" class="black-text">
+
+
+            <div class="thumbnail">
+                <img src="creators/ivan.jpg" />
+            </div>
+            <h3 class="list-group-item-heading">Ivan Fortenberry</h3>
+        </a>
+    </li>
+</ul>
+
+
+<div class="row" ng-show="creatorMode=='main'" >
+    <div class="col-sm-4">
+
+        <a ng-click="loadCreator('name')" href="#" class="black-text">
+
+
+            <div class="thumbnail">
+                <img src="creators/ivan.jpg" />
+                <h3 class="list-group-item-heading">Ivan Fortenberry</h3>
+            </div>
+          
+        </a>
+
+    </div>
+</div>
+
+
+<creator name="creatorMode" creator-mode="creatorMode" comic-mode="comicMode" ng-show="creatorMode && creatorMode != 'main'"></creator>

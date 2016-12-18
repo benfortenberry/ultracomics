@@ -1,0 +1,171 @@
+﻿<!DOCTYPE html>
+<html lang="en" ng-app="u2016" ng-cloak ng-controller="uCtrl" style="background-color: {{htmlColor}}">
+
+<head>
+    <meta charset="utf-8">
+    <title>Ultra Comics</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css?family=Play:400,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+          rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"
+            integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+            crossorigin="anonymous"></script>
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+    <link href="css/custom.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="container">
+
+        <div class="row" ng-show="!comicMode && !creatorMode">
+
+            <div class="col-xs-12 text-center" style="background-position:center; text-shadow:5px 2px {{badgeColor}}">
+                <h1 style="font-size:15vmin">Ultra Comics</h1>
+
+            </div>
+
+        </div>
+
+        <div class="row">
+
+            <div class="col-xs-12">
+
+                <nav class="navbar navbar-default" ng-show="comicMode || creatorMode" role="navigation" style="background-color: transparent">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" style="background-color: transparent; border:none"
+                                ng-click="isNavCollapsed = !isNavCollapsed">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" href="#" ng-click="comicMode=null;">
+                            <h2 style="margin:0; padding:0;">
+                                UC
+                            </h2>
+                        </a>
+                    </div>
+                    <div class="collapse navbar-collapse" uib-collapse="isNavCollapsed">
+                        <ul class="nav navbar-nav">
+                            <li>
+                                <a href="#" ng-click="comicMode=null; creatorMode=null;">
+                                    <!--<i class="material-icons" style="vertical-align:bottom">home</i>-->
+                                    <h3>HOME</h3>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#"  ng-click="comicMode='main'; creatorMode= null;">
+                                    <!--<i class="material-icons" style="vertical-align:bottom">chrome_reader_mode</i>-->
+                                    <h3> COMICS</h3>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="#"  ng-click="creatorMode='main'; comicMode = null; changeColors();">
+
+                                    <!--<i class="material-icons" style="vertical-align:bottom">people</i>-->
+                                    <h3>
+                                        CREATORS
+                                    </h3>
+
+                                </a>
+                            </li>
+                            <!--<li><a href="#">CONTA</a></li>-->
+                        </ul>
+                    </div>
+                </nav>
+
+                <hr style="border-top:solid 1px white; border-bottom:1px solid {{badgeColor}} " />
+
+            </div>
+        </div>
+
+
+        <div class="row">
+
+            <div class="text-center" ng-show="!creatorMode" ng-class="!comicMode ? 'col-sm-6' : 'col-sm-12'">
+
+
+
+                <comic-menu comic-mode="comicMode"></comic-menu>
+              
+            </div>
+      
+        
+            <div class="text-center" ng-show="!comicMode" ng-class="!creatorMode ? 'col-sm-6' : 'col-sm-12'">
+             
+                  
+                <creator-menu creator-mode="creatorMode" comic-mode="comicMode"></creator-menu>
+
+                </div>
+            </div>
+
+
+        <div class="row">
+            <div class="col-xs-12 text-center">
+                <!--{{currentPage}}-->
+                <!--<ul uib-pager total-items="totalItems"  previous-text="&lsaquo;" next-text="&rsaquo;" items-per-page="1" ng-model="currentPage"></ul>-->
+                <!--<comic></comic>-->
+                <!--<ul uib-pagination boundary-links="true" total-items="totalItems" items-per-page="1" ng-model="currentPage"
+                    class="pagination-sm" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"></ul>-->
+
+            </div>
+
+        </div>
+
+
+
+
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <p>
+                &copy; {{year}} Ultra Comics &middot; <a class="white-text" href="{{'mailto:'}}{{'ivanfortenberry@'}}outlook.com">Contact</a>
+
+                &middot;
+                <a href="http://eepurl.com/ctXMWL" class="white-text" target="_blank">Newsletter</a>
+            </p>
+
+        </div>
+    </footer>
+
+
+
+    <script src="js/angular.min.js"></script>
+    <script src="js/ui-boostrap.js"></script>
+    <script src="js/angular-color-this.js"></script>
+    <script src="js/ng-FitText.min.js"></script>
+    <script src="js/randomColor.js"></script>
+    <script src="module/module.js"></script>
+    <script src="service/service.js"></script>
+    <script src="controller/controller.js"></script>
+    <script src="modal/modal.js"></script>
+    <script src="directives/comic/comic.js"></script>
+    <script src="directives/comicMenu/comicMenu.js"></script>
+    <script src="directives/creatorMenu/creatorMenu.js"></script>
+    <script src="directives/creator/creator.js"></script>
+
+
+
+    <script>
+
+
+
+        $(document).bind('keyup', function (e) {
+
+            if (e.keyCode == 39) {
+                jQuery('a.carousel-control.right').trigger('click');
+            }
+
+            else if (e.keyCode == 37) {
+                jQuery('a.carousel-control.left').trigger('click');
+            }
+
+        });
+    </script>
+</body>
+</html>
